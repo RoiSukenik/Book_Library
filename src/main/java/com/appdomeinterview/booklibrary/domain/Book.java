@@ -1,25 +1,41 @@
 package com.appdomeinterview.booklibrary.domain;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Entity
-@Table
-@Builder
+@Table(name = "books")
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
 public class Book {
     @Id
     @Column(name = "book_name", nullable = false)
-    String bookName;
+    private String bookName;
 
-    String bookAuthor;
+    @Column
+    private String bookAuthor;
 
-    Integer numberOfPages;
+    @Column
+    private Integer numberOfPages;
 
+    @CreationTimestamp
+    @Column
+    private Timestamp timestamp;
+
+    public Book() {
+
+    }
+
+    public Book(String name, String author, int numberOfPages) {
+        this.bookName = name;
+        this.bookAuthor = author;
+        this.numberOfPages = numberOfPages;
+    }
 }

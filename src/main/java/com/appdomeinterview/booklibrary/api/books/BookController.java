@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController(BooksApi.BASE_PATH)
 public class BookController implements BooksApi {
 
-    @Autowired
-    BookService bookService;
+    private final BookService bookService;
 
-    @Autowired
-    BookMappers bookMappers;
+    private final BookMappers bookMappers;
+
+    public BookController(@Autowired BookService bookService, @Autowired BookMappers bookMappers) {
+        this.bookService = bookService;
+        this.bookMappers = bookMappers;
+    }
 
     @Override
     public BookDto getBookByName(String bookName) {
