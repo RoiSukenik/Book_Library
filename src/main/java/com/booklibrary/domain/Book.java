@@ -1,4 +1,4 @@
-package com.appdomeinterview.booklibrary.domain;
+package com.booklibrary.domain;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
-package com.appdomeinterview.booklibrary.application;
+package com.booklibrary.application;
 
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookDto;
-import com.appdomeinterview.booklibrary.domain.Book;
-import com.appdomeinterview.booklibrary.technical.repositories.BookRepository;
+import com.booklibrary.api.books.bookdtos.BookDto;
+import com.booklibrary.domain.Book;
+import com.booklibrary.technical.repositories.BookRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

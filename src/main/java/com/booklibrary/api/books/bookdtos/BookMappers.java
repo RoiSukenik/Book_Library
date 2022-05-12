@@ -1,6 +1,6 @@
-package com.appdomeinterview.booklibrary.api.books.bookdtos;
+package com.booklibrary.api.books.bookdtos;
 
-import com.appdomeinterview.booklibrary.domain.Book;
+import com.booklibrary.domain.Book;
 import org.springframework.stereotype.Component;
 
 @Component

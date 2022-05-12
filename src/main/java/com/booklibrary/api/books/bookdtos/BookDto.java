@@ -1,4 +1,4 @@
-package com.appdomeinterview.booklibrary.api.books.bookdtos;
+package com.booklibrary.api.books.bookdtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.appdomeinterview.booklibrary;
+package com.booklibrary;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

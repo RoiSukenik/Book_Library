@@ -1,6 +1,6 @@
-package com.appdomeinterview.booklibrary.api.books;
+package com.booklibrary.api.books;
 
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookDto;
+import com.booklibrary.api.books.bookdtos.BookDto;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

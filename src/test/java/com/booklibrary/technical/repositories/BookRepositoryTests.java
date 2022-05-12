@@ -1,6 +1,6 @@
-package com.appdomeinterview.booklibrary.technical.repositories;
+package com.booklibrary.technical.repositories;
 
-import com.appdomeinterview.booklibrary.domain.Book;
+import com.booklibrary.domain.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

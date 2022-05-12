@@ -1,8 +1,8 @@
-package com.appdomeinterview.booklibrary.api.books;
+package com.booklibrary.api.books;
 
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookDto;
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookMappers;
-import com.appdomeinterview.booklibrary.application.BookService;
+import com.booklibrary.api.books.bookdtos.BookDto;
+import com.booklibrary.api.books.bookdtos.BookMappers;
+import com.booklibrary.application.BookService;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

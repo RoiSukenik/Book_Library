@@ -1,10 +1,10 @@
-package com.appdomeinterview.booklibrary.application;
+package com.booklibrary.application;
 
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookDto;
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookMappers;
-import com.appdomeinterview.booklibrary.domain.Book;
-import com.appdomeinterview.booklibrary.technical.cache.InMemoryCache;
-import com.appdomeinterview.booklibrary.technical.repositories.BookRepository;
+import com.booklibrary.api.books.bookdtos.BookDto;
+import com.booklibrary.api.books.bookdtos.BookMappers;
+import com.booklibrary.domain.Book;
+import com.booklibrary.technical.cache.InMemoryCache;
+import com.booklibrary.technical.repositories.BookRepository;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;

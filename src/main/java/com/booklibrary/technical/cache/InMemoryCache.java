@@ -1,8 +1,8 @@
-package com.appdomeinterview.booklibrary.technical.cache;
+package com.booklibrary.technical.cache;
 
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookErrors;
-import com.appdomeinterview.booklibrary.domain.Book;
-import com.appdomeinterview.booklibrary.technical.repositories.BookRepository;
+import com.booklibrary.api.books.bookdtos.BookErrors;
+import com.booklibrary.domain.Book;
+import com.booklibrary.technical.repositories.BookRepository;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;

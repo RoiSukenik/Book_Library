@@ -1,6 +1,6 @@
-package com.appdomeinterview.booklibrary.technical.repositories;
+package com.booklibrary.technical.repositories;
 
-import com.appdomeinterview.booklibrary.domain.Book;
+import com.booklibrary.domain.Book;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
