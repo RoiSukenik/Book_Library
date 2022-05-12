@@ -1,19 +1,14 @@
 package com.appdomeinterview.booklibrary.application;
 
 import com.appdomeinterview.booklibrary.api.books.bookdtos.BookDto;
-import com.appdomeinterview.booklibrary.api.books.bookdtos.BookErrors;
 import com.appdomeinterview.booklibrary.api.books.bookdtos.BookMappers;
 import com.appdomeinterview.booklibrary.domain.Book;
+import com.appdomeinterview.booklibrary.technical.cache.InMemoryCache;
 import com.appdomeinterview.booklibrary.technical.repositories.BookRepository;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class BookService {
@@ -22,28 +17,19 @@ public class BookService {
 
     final BookMappers bookMappers;
 
-    LoadingCache<String, Book> inMemoryBookCache =
-            CacheBuilder.newBuilder()
-                        .expireAfterWrite(1, TimeUnit.MINUTES)
-                        .maximumSize(3)
-                        .build(
-                                new CacheLoader<String, Book>() {
-                                    @Override
-                                    public Book load(String key) {
-                                        return bookRepository.findByBookName(key)
-                                                             .orElseThrow(() -> new BookErrors.BookDoesNotExistException(key));
-                                    }
-                                }
-                              );
+    final InMemoryCache inMemoryCache;
 
-    public BookService(@Autowired BookRepository bookRepository, @Autowired BookMappers bookMappers) {
+    public BookService(@Autowired BookRepository bookRepository,
+                       @Autowired BookMappers bookMappers,
+                       @Autowired InMemoryCache inMemoryCache) {
         this.bookRepository = bookRepository;
         this.bookMappers = bookMappers;
+        this.inMemoryCache = inMemoryCache;
     }
 
     @SneakyThrows
     public Book getBookByName(String bookName) {
-        return inMemoryBookCache.get(bookName);
+        return inMemoryCache.cache.get(bookName);
     }
 
 
