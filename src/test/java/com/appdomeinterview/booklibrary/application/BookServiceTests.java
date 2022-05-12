@@ -30,7 +30,7 @@ public class BookServiceTests {
 
         bookService.addBook(newBook);
 
-        Book newDomainBook = bookRepository.findByBookName("name");
+        Book newDomainBook = bookRepository.findByBookName("name").orElse(null);
 
         Assertions.assertNotNull(newDomainBook);
         Assertions.assertEquals(newBook.getBookName(), newDomainBook.getBookName());
@@ -54,7 +54,7 @@ public class BookServiceTests {
 
         bookService.deleteBookByName("name");
 
-        Assertions.assertNull(bookRepository.findByBookName("name"));
+        Assertions.assertNull(bookRepository.findByBookName("name").orElse(null));
     }
 
 }

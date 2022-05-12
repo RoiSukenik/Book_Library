@@ -20,7 +20,7 @@ public class BookRepositoryTests {
         Book book = new Book("name", "author", 5);
         bookRepository.save(book);
 
-        Book bookByName = bookRepository.findByBookName(book.getBookName());
+        Book bookByName = bookRepository.findByBookName(book.getBookName()).orElse(null);
         Assertions.assertNotNull(bookByName);
         Assertions.assertEquals(book.getBookName(), bookByName.getBookName());
     }
@@ -30,6 +30,6 @@ public class BookRepositoryTests {
         Book book = new Book("name", "author", 5);
         bookRepository.save(book);
         bookRepository.deleteBookByBookName(book.getBookName());
-        Assertions.assertNull(bookRepository.findByBookName(book.getBookName()));
+        Assertions.assertNull(bookRepository.findByBookName(book.getBookName()).orElse(null));
     }
 }
