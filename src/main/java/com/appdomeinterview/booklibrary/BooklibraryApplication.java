@@ -1,4 +1,4 @@
-package com.appdomeinterview.booklibrery;
+package com.appdomeinterview.booklibrary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
