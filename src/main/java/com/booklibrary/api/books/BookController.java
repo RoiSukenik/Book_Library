@@ -5,9 +5,11 @@ import com.booklibrary.api.books.bookdtos.BookMappers;
 import com.booklibrary.application.BookService;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(BooksApi.BASE_PATH)
+@RestController
+@RequestMapping(BooksApi.BASE_PATH)
 public class BookController implements BooksApi {
 
     private final BookService bookService;
