@@ -25,7 +25,7 @@ public class InMemoryCache {
                         .expireAfterWrite(TIME_UNTIL_CACHE_VALUE_EXPIRE, TimeUnit.MINUTES)
                         .maximumSize(CACHE_SIZE)
                         .build(
-                                new CacheLoader<String, Book>() {
+                                new CacheLoader<>() {
                                     @Override
                                     public Book load(String key) {
                                         return bookRepository.findByBookName(key)

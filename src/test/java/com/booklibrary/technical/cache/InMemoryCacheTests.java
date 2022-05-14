@@ -5,29 +5,31 @@ import com.booklibrary.technical.repositories.BookRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-@RunWith(SpringRunner.class)
-@DataJpaTest
+import static org.mockito.BDDMockito.given;
+
+@SpringBootTest
 @Slf4j
 public class InMemoryCacheTests {
-    @Autowired
+    @MockBean
     private BookRepository bookRepository;
 
-    private InMemoryCache inMemoryCache = new InMemoryCache(bookRepository);
+    @Autowired
+    private InMemoryCache inMemoryCache;
 
 
     @Test
     public void check_adding_to_cache() throws ExecutionException {
         Book book = new Book("name", "author", 5);
 
-        bookRepository.save(book);
+        given(bookRepository.findByBookName(book.getBookName())).willReturn(Optional.of(book));
 
         Book cachedBook = inMemoryCache.cache.get(book.getBookName());
 
