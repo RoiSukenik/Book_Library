@@ -1,6 +1,7 @@
 package com.booklibrary.application;
 
 import com.booklibrary.api.books.bookdtos.BookDto;
+import com.booklibrary.api.books.bookdtos.BookErrors;
 import com.booklibrary.api.books.bookdtos.BookMappers;
 import com.booklibrary.domain.Book;
 import com.booklibrary.technical.cache.InMemoryCache;
@@ -41,7 +42,11 @@ public class BookService {
     }
 
     public void deleteBookByName(String bookName) {
-        bookRepository.deleteBookByBookName(bookName);
+        bookRepository.findByBookName(bookName).map(it -> {
+                          bookRepository.deleteBookByBookName(it.getBookName());
+                          return it;
+                      })
+                      .orElseThrow(() -> new BookErrors.BookDoesNotExistException("Can't delete a book which does not exist!"));
     }
 
 }

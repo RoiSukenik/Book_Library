@@ -34,7 +34,8 @@ public class BookController implements BooksApi {
     }
 
     @Override
-    public void deleteBook(String bookName) {
+    public String deleteBook(String bookName) {
         bookService.deleteBookByName(bookName);
+        return bookName;
     }
 }

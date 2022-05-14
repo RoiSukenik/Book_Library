@@ -14,5 +14,5 @@ public interface BooksApi {
     String addBook(@RequestBody BookDto newBook);
 
     @DeleteMapping(value = "/{bookName}", name = "Delete a book")
-    void deleteBook(@PathVariable("bookName") String bookName);
+    String deleteBook(@PathVariable("bookName") String bookName);
 }

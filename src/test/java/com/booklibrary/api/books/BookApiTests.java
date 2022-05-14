@@ -21,7 +21,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @AutoConfigureJsonTesters
@@ -55,7 +57,7 @@ public class BookApiTests {
                                                   .getResponse();
         //Then
         Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
-        Assertions.assertEquals(response.getContentAsString(), jacksonBookTester.write(bookMappers.map(book)).getJson());
+        Assertions.assertEquals(jacksonBookTester.write(bookMappers.map(book)).getJson(), response.getContentAsString());
 
     }
 
@@ -76,5 +78,25 @@ public class BookApiTests {
         //Then
         Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
         Assertions.assertEquals(newBook.getBookName(), response.getContentAsString());
+    }
+
+    @Test
+    public void delete_book_endpoint() throws Exception {
+        Book book = new Book("name", "author", 5);
+
+        //Given
+        given(bookRepository.findByBookName(book.getBookName())).willReturn(Optional.of(book));
+        doNothing().when(bookRepository).deleteBookByBookName(book.getBookName());
+
+        //When
+        MockHttpServletResponse response = mockMvc.perform(delete(String.format("%s/%s",
+                                                                                BooksApi.BASE_PATH,
+                                                                                book.getBookName()))
+                                                                   .accept(MediaType.APPLICATION_JSON))
+                                                  .andReturn()
+                                                  .getResponse();
+        //Then
+        Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
+        Assertions.assertEquals(book.getBookName(), response.getContentAsString());
     }
 }
