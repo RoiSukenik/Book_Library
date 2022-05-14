@@ -29,7 +29,10 @@ public class InMemoryCacheTests {
 
         bookRepository.save(book);
 
-        inMemoryCache.cache.get(book.getBookName());
+        Book cachedBook = inMemoryCache.cache.get(book.getBookName());
+
+        Assertions.assertNotNull(cachedBook);
+        Assertions.assertEquals(book, cachedBook);
 
         Map<String, Book> cacheMap = inMemoryCache.cache.asMap();
 
