@@ -3,6 +3,7 @@ package com.booklibrary.application;
 import com.booklibrary.api.books.bookdtos.BookDto;
 import com.booklibrary.domain.Book;
 import com.booklibrary.technical.repositories.BookRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@Slf4j
 public class BookServiceTests {
 
     @Autowired
